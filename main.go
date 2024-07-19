@@ -33,8 +33,11 @@ func (t Training) distance() float64 {
 
 // meanSpeed возвращает среднюю скорость бега или ходьбы.
 func (t Training) meanSpeed() float64 {
-	// вставьте ваш код ниже
-	return float64((t.Action) / int(t.Duration))
+	if int(t.Duration) == 0 {
+		return 0
+	} else {
+		return float64((t.Action) / int(t.Duration))
+	}
 }
 
 // Calories возвращает количество потраченных килокалорий на тренировке.
@@ -176,8 +179,12 @@ type Swimming struct {
 // длина_бассейна * количество_пересечений / м_в_км / продолжительность_тренировки
 // Это переопределенный метод Calories() из Training.
 func (s Swimming) meanSpeed() float64 {
-	// вставьте ваш код ниже
-	return (float64(s.LengthPool) * float64(s.CountPool) / MInKm / float64(s.Duration))
+	if float64(s.Duration) == 0 {
+		return 0
+
+	} else {
+		return (float64(s.LengthPool) * float64(s.CountPool) / MInKm / float64(s.Duration))
+	}
 }
 
 // Calories возвращает количество калорий, потраченных при плавании.
